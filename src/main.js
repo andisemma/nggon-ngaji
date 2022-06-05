@@ -12,7 +12,15 @@ import VueSweetalert2 from 'vue-sweetalert2';
 
 import 'sweetalert2/dist/sweetalert2.min.css';
 
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+
+import Embed from 'v-video-embed';
+
+Vue.use(Embed);
+
 Vue.use(VueSweetalert2);
+Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false;
 

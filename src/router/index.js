@@ -17,6 +17,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "Home" */ '../views/Home.vue'),
   },
   {
+    path: '/:id',
+    name: 'subGrid',
+    component: () =>
+      import(/* webpackChunkName: "subGrid" */ '../views/subGrid.vue'),
+  },
+  {
     path: '/auditi',
     name: 'auditi',
     component: () =>

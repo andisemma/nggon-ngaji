@@ -6,7 +6,7 @@
 
     <VSpacer />
     <span></span>
-    <v-btn v-if="$route.path == '/'" @click="signIn" id="signIn">
+    <!-- <v-btn v-if="$route.path == '/'" @click="signIn" id="signIn">
       <img src="@/assets/google-logo.png" height="30" width="30" alt="" />
       sign in
     </v-btn>
@@ -14,10 +14,10 @@
       <span>{{ $store.state.profile.displayName }} </span>
       <v-avatar size="32">
         <img :src="$store.state.profile.photoURL" alt="" />
-      </v-avatar>
+      </v-avatar> -->
 
-      <!-- Dialog -->
-      <VDialog
+    <!-- Dialog -->
+    <!-- <VDialog
         v-model="menu"
         scrollable
         :overlay="false"
@@ -41,7 +41,7 @@
           </VCardActions>
         </VCard>
       </VDialog>
-    </div>
+    </div> -->
   </v-app-bar>
 </template>
 
@@ -64,7 +64,6 @@ export default {
         getOnce('users', res.email).then((cb) => {
           if (cb) {
             this.$store.commit('setState', ['userDetails', cb, false]);
-
             cb.role == 'admin'
               ? this.$router.push('/admin')
               : cb.role == 'auditor'

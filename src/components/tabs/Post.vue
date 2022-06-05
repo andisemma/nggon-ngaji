@@ -34,33 +34,12 @@
 </template>
 
 <script>
-import { updateData } from '/src/firebase/firestore';
-
 export default {
   components: {},
   data() {
-    return {
-      master: {},
-      baru: {
-        judul: '',
-        img: '',
-        descriptions: '',
-      },
-      file: null,
-    };
+    return {};
   },
-  methods: {
-    submit() {
-      updateData(this.baru, 'parent', 'parent', this.baru.judul).then(() => {
-        this.$swal({
-          icon: 'success',
-          title: 'Your work has been saved',
-          showConfirmButton: false,
-          timer: 1000,
-        });
-      });
-    },
-  },
+  methods: {},
   computed: {},
   mounted() {},
   created() {},

@@ -12,3 +12,12 @@ export function debug(judul, data, isJudul) {
     console.log(judul + ' => ', data);
   }
 }
+
+export function alertSuccess() {
+  this.$swal({
+    icon: 'success',
+    title: 'Your work has been saved',
+    showConfirmButton: false,
+    timer: 1000,
+  });
+}
