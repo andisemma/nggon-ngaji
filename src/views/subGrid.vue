@@ -1,10 +1,14 @@
 <template>
   <v-card class="mt-10">
     <!-- isLoading -->
-    <Loader v-if="isLoading" />
+    <Loader v-if="!this.$store.state.data[this.$route.params.id]" />
     <!-- grid view -->
     <div v-else class="d-flex flex-wrap pa-8">
-      <v-hover v-slot="{ hover }" v-for="(pak, index) in parent" :key="index">
+      <v-hover
+        v-slot="{ hover }"
+        v-for="(pak, index) in this.$store.state.data[this.$route.params.id]"
+        :key="index"
+      >
         <v-card
           class="mx-4 my-4 pa-2"
           width="400"
@@ -71,7 +75,7 @@ import Loader from '/src/components/Loader';
 
 export default {
   components: { Loader },
-  props: ['id'],
+
   data() {
     return {
       parent: {},
@@ -109,17 +113,7 @@ export default {
     },
   },
   computed: {},
-  mounted() {
-    console.log(this.$route.params.id);
-    this.axios
-      .get(
-        `https://script.google.com/macros/s/AKfycbzXUeVxg7RnLijJ8mmWi7pn_FktOd_UNNjavcwn407VZ5zpn7YdNAPi46GiYY1qLrzd/exec?id=${this.$route.params.id}`
-      )
-      .then((res) => {
-        this.parent = res.data;
-        this.isLoading = false;
-      });
-  },
+  mounted() {},
   created() {},
 };
 </script>

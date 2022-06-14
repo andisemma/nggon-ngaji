@@ -5,10 +5,14 @@
     </v-alert>
 
     <!-- isLoading -->
-    <Loader v-if="isLoading" />
+    <Loader v-if="!this.$store.state.data.parent" />
     <!-- grid view -->
     <div v-else class="d-flex flex-wrap pa-8">
-      <v-hover v-slot="{ hover }" v-for="(pak, index) in parent" :key="index">
+      <v-hover
+        v-slot="{ hover }"
+        v-for="(pak, index) in this.$store.state.data.parent"
+        :key="index"
+      >
         <v-card
           class="mx-4 my-4 pa-2"
           width="400"
@@ -80,11 +84,13 @@ export default {
   mounted() {
     this.axios
       .get(
-        'https://script.google.com/macros/s/AKfycbzXUeVxg7RnLijJ8mmWi7pn_FktOd_UNNjavcwn407VZ5zpn7YdNAPi46GiYY1qLrzd/exec?id=parent'
+        //'https://script.google.com/macros/s/AKfycbzXUeVxg7RnLijJ8mmWi7pn_FktOd_UNNjavcwn407VZ5zpn7YdNAPi46GiYY1qLrzd/exec?id=parent'
+        'https://script.google.com/macros/s/AKfycbxRv0Dt4sfPPQV-0dpp8mtEBrduaccQVb9zWWW0tcwZDSXu8HsWn2UZMN84HRIwA6wL/exec'
       )
       .then((res) => {
-        this.parent = res.data;
-        this.isLoading = false;
+        this.$store.commit('setState', ['data', res.data, false]);
+
+        console.log(res.data);
       });
   },
   created() {},

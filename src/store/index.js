@@ -17,6 +17,7 @@ export default new Vuex.Store({
     children: [],
     userDetails: {},
     isLoading: false,
+    data: null,
   },
   mutations: {
     setProfile(state, data) {
